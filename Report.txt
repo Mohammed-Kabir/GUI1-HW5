@@ -1,0 +1,15 @@
+Project description:
+
+This is a scrabble game that has been developed using JavaScript framework jQuery with interactive 
+and user-friendly attractive UI. In this dynamic game, tiles drag-and-drop feature is provided which 
+helps the user to easily play and enjoy the game. The display screen of this scrabble game at first 
+consists of both players i.e. player 1 and player 2 scores details. After that 4 consecutive buttons 
+are designed as the first button is show Tiles button, the second button is of Refresh Tiles, the third 
+button is Back to Rack and the fourth button is Submit Word button.  
+
+This program is aimed to display one line of the Scrabble board to the user along with seven or almost eight 
+letter tiles on a tile rack. The user then drags tiles to the board to make a word, and their score is reported, 
+taking the letter values and bonus squares into consideration.In the middle and center of this program the scrabble
+board is placed and below the main board of scrabble, the second player’s tiles are kept on a rack. 
+Finally, at the end of this game, remaining tiles feature, play again button as well as both players, 
+player 1 and player 2 name text fields and start button are mentioned.    

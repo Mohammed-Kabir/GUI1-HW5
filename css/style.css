@@ -1,0 +1,75 @@
+/*
+FILE NAME: style.css
+ASSIGNMENT: Implementation of a Scrabble game with Drag-and-Drop features
+Name: Mohammed Kabir
+email: Mohammed_Kabir@student.uml.edu
+Course: GUI Programming I
+Date: 6/23/2022
+FILE DESCRIPTION:  The purpuse of this file is to design the html file and implementing
+the board and tiles holder for the srabble game. 
+Project description: Please read the Report.txt file for project description and 
+it's implemention.
+*/
+
+body{
+    background-color: rgb(162, 175, 40);  
+}
+.g-row {
+    position: relative;
+    width: 640px;
+    margin: 0 auto;
+}
+
+.box {
+    display: inline-block;
+    width: 39.6px;
+    height: 37px;
+    text-align: center;
+    float: left;
+    font-size: 25px;
+}
+.board{
+    width: 620px;
+    margin: auto;
+    height: 620px;
+    padding: 12px;
+    background-image: url('../images/bg-board.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.tileBox {
+    width: 40px;
+    height: 37px;
+    display: inline-block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    }
+.playerOneBoxRow,
+.playerTwoBoxRow {
+    display: none;
+}
+.playerOneBox,
+.playerOneTitle {
+    display: none;
+}
+.playerOneBox,
+.playerTwoBox{
+    background-image: url("../images/scrabble-tile-holder-406774_640.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 80px;
+    width: 300px;
+    padding-top: 25px;
+}
+.playerOneTile,
+.playerTwoTile,
+.permInPlay,
+.tempInPlay {
+    margin-left: 2px;
+    cursor: pointer;
+    text-indent: -9999px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

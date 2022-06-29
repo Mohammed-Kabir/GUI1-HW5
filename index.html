@@ -1,0 +1,146 @@
+<!--
+/*
+FILE NAME: index.html
+ASSIGNMENT: Implementation of a Scrabble game with Drag-and-Drop features
+Name: Mohammed Kabir
+email: Mohammed_Kabir@student.uml.edu
+Course: GUI Programming I
+Date: 6/23/2022
+FILE DESCRIPTION:  The purpuse of this file is to build the structure of the 
+board game scrabble. It also included some jquery plugins and boostraps in order
+to make the game and make it look good. It also created required buttons for the 
+game. 
+Project description: Please read the Report.txt file for project description and 
+it's implemention.
+*/
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<link rel="stylesheet" href="css/style.css">
+<title>Scrabble</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-1 text-center text-danger">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <h5 class="playerOneDisplayName"> Player 1 Score</h5>
+                <div class="playerOneScore">0</div>
+                <br/>
+                <hr/>
+                <i class="fa fa-user" aria-hidden="true"></i> 
+                <h5 class="playerTwoDisplayName">Player 2 Score</h5>
+                <div class="playerTwoScore">0</div>
+                <br/>
+                <hr/>
+                <button class="showTiles btn btn-sm btn-info">SHOW TILES</button><br/><br/>
+                <button class="refreshTiles btn btn-sm btn-info">Refresh Tiles</button><br/><br/>
+                <button class="backToRack btn btn-sm btn-info">Back to Rack</button><br/><br/>
+                <button class="submitWord btn btn-sm btn-info">Submit Word</button>
+            </div>
+
+            <div class="col-7">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item"><img width="40" height="40" src="images/tiles/Scrabble_Tile_S.jpg"></li>
+                    <li class="list-inline-item"><img width="40" height="40"  src="images/tiles/Scrabble_Tile_C.jpg"></li>
+                    <li class="list-inline-item"><img width="40" height="40"  src="images/tiles/Scrabble_Tile_R.jpg"></li>
+                    <li class="list-inline-item"><img width="40" height="40"  src="images/tiles/Scrabble_Tile_A.jpg"></li>
+                    <li class="list-inline-item"><img width="40" height="40"  src="images/tiles/Scrabble_Tile_B.jpg"></li>
+                    <li class="list-inline-item"><img width="40" height="40"  src="images/tiles/Scrabble_Tile_B.jpg"></li>
+                    <li class="list-inline-item"><img width="40" height="40"  src="images/tiles/Scrabble_Tile_L.jpg"></li>
+                    <li class="list-inline-item"><img width="40" height="40"  src="images/tiles/Scrabble_Tile_E.jpg"></li>
+                </ul>
+                <div class="board">
+                    <div class="gameBoard"></div>
+                </div>
+            </div>
+
+            <div class="col-4 text-center">
+                <h5 class="playerOneTitle text-primary">Player 1 Tiles</h5>
+                <h5 class="playerTwoTitle text-primary">Player 2 Tiles</h5>
+                
+                <div class="playerOneBox">
+                    <div class="playerOneBoxRow text-danger">
+                    </div>
+                </div>
+                <div class="playerTwoBox">
+                    <div class="playerTwoBoxRow text-danger">
+                    </div>
+                </div>
+                <hr>
+                <div class="remainingTilesBox">
+                    <h3>Remaining Tiles</h3>
+                    <div class="remainingTiles"></div>
+                </div>
+                <button class="btn btn-sm btn-danger playAgain">PLAY AGAIN</button>
+            </div>
+        </div>
+        
+    </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="gameModal" tabindex="-1" role="dialog" aria-labelledby="gameModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="gameModalLabel">Enter Player Names</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="text" placeholder="Player 1 Name" class="playerOneName form-control">
+          </div>
+          <br/>
+          <div class="form-group">
+            <input type="text" placeholder="Player 2 Name" class="playerTwoName form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger start">Start</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(window).on('load', function() {
+        $('#gameModal').modal('show');
+    });
+    $(".start").on('click', function(){
+        const regex = /^[a-zA-Z ]+$/;
+        let name1 = $('.playerOneName').val();
+        let name2 = $('.playerTwoName').val();
+
+        if(!regex.test(name1) || !regex.test(name2)){
+          alert('Invalid name given.');
+          window.location.reload();
+        }
+        else{
+          
+        $('#gameModal').modal('hide');
+        }
+    });
+
+
+</script>
+</body>
+</html>
